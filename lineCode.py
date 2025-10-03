@@ -1,18 +1,29 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import pandas as pd
+#
+#from scipy.stats import linregress
 # Load CSV data (remove spaces in your CSV file first)
-data = np.loadtxt('lineEquation.csv', delimiter=',')
 
-def equation_of_line(x_value, y_value):
-    slope_m = 1.85
-    intercept_c = 1.22
-    # Example: y = mx + c
-    
-    return slope_m * x_value + intercept_c
+lineCode_pandas = pd.read_csv('lineCode_pandas.csv')
+x = lineCode_pandas['x'] #y working hours
+y = lineCode_pandas['y'] #y axis life expectancy
 
-# Example usage
-x = data[0]
-y = data[1]
-plt.plot(x, y, 'o')
-plt.show()
+
+#regression stats stuff
+#slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+# fig, ax = plt.subplots()
+# ax.scatter(x, y) #scatters total and divorces
+
+# ax.set_xlabel('Average annual working hours per worker', fontsize=10)  
+# ax.set_ylabel('Life expectancy at birth', fontsize=10)
+# ax.plot(x, slope*x + intercept, color='r', label='Regression line \n y=-0.01x + 96.61')  #regression line
+# ax.legend()
+# ax.set_title('Working hours vs Life Expectancy')
+
+# #everything here used to make regression line
+# print(f" slope = {slope}, intercept = {intercept}")
+# print(f" Pearson correlation = {r_value}, and p-value = {p_value}")
+
+# #splitting the graph up because it looks like two different correlations are being shown rn dun dun dunnnnnn
