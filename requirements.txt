@@ -2,4 +2,3 @@ pytest
 matplotlib
 pandas
 scipy
-os
