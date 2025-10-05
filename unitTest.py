@@ -1,5 +1,7 @@
 import unittest
 from  lineCode import line_function
+import matplotlib.pyplot as plt 
+import pandas as pd
 import os
 
 # define the unit tests
