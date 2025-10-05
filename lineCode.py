@@ -2,8 +2,9 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import linregress
-# Load CSV data (remove spaces in your CSV file first)
 
+
+# opens csv file and performs linear regression
 def line_function():
     lineCode_pandas = pd.read_csv('lineCsvFile.csv')
     # Extract x and y
