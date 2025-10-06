@@ -12,6 +12,7 @@ def line_function():
     y = lineCode_pandas['y']
 
     slope, intercept, r_value, p_value, std_err = linregress(x, y)
+    
 
 # y = 1.85x + 1.22
     plt.plot(x, slope*x + intercept, color='r',
@@ -21,8 +22,7 @@ def line_function():
     plt.xlabel("X axis")
     plt.ylabel("Y axis")
     plt.legend()
-   # plt.show()
-    return slope, intercept, r_value, p_value, std_err
-
+   #plt.show()
+    return slope, intercept, r_value, p_value, std_err, x , y
 
 line_function()
