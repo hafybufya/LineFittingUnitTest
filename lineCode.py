@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import linregress
 
+#maybe an enter name of the csv function? to make it more interacting? if not just use csv that i make up 
 
 # opens csv file and performs linear regression
 def line_function():
@@ -11,10 +12,11 @@ def line_function():
     x = lineCode_pandas['x']
     y = lineCode_pandas['y']
 
-    slope, intercept, r_value, p_value, std_err = linregress(x, y)
+    #ignoring uncecessary values
+    slope, intercept, _, _, _ = linregress(x, y)
     
 
-# y = 1.85x + 1.22
+# y = 4.07x -0.67
     plt.plot(x, slope*x + intercept, color='r',
             label=f"Regression line\ny = {slope:.2f}x + {intercept:.2f}")
 
@@ -22,7 +24,7 @@ def line_function():
     plt.xlabel("X axis")
     plt.ylabel("Y axis")
     plt.legend()
-   #plt.show()
-    return slope, intercept, r_value, p_value, std_err, x , y
+    plt.show() #-> find a way to not have this run every unit test.
+    return slope, intercept, x , y
 
 line_function()
