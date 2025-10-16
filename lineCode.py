@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import linregress
 
-#maybe an enter name of the csv function? to make it more interacting? if not just use csv that i make up 
-
 # opens csv file and performs linear regression
 def line_function():
     lineCode_pandas = pd.read_csv('lineCsvFile.csv')
@@ -13,7 +11,7 @@ def line_function():
     y = lineCode_pandas['y']
 
     #ignoring uncecessary values
-    slope, intercept, _, _, _ = linregress(x, y)
+    slope, intercept, r, p, std_err = linregress(x, y)
     
 
 # y = 4.07x -0.67
@@ -24,7 +22,15 @@ def line_function():
     plt.xlabel("X axis")
     plt.ylabel("Y axis")
     plt.legend()
-    plt.show() #-> find a way to not have this run every unit test.
-    return slope, intercept, x , y
-
+    #plt.show() #-> find a way to not have this run every unit test.
+    return slope, intercept, r, p, std_err, x , y
 line_function()
+
+    #count the number of columns in csv
+def count_columns_pandas(filepath):
+    df = pd.read_csv(filepath)  
+    return len(df.columns)
+
+# Example
+print(count_columns_pandas("lineCsvFile.csv"))
+
