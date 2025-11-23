@@ -52,13 +52,11 @@ def read_line_csv():
     pandas Dataframe -> converts csv to df containing line data
 
     """
-
+    
+    
     line_df = pd.read_csv(csv_in_use)
     return line_df
 
-
-# Calls function so to be used in plot_line()
-line_df = read_line_csv()
 
 
 
@@ -66,8 +64,13 @@ line_df = read_line_csv()
 
 def plot_line(x = None, y = None):
 
+    if x is None or y is None:
+        df = read_line_csv()
+        x = df[x_axis]
+        y = df[y_axis]
+
     #ignoring uncecessary values
-    slope, intercept, x, y = linregress(x, y)
+    slope, intercept, r, p, std_err = linregress(x, y)
     
 
     plt.plot(x, slope*x + intercept, color='r',
@@ -77,17 +80,19 @@ def plot_line(x = None, y = None):
     plt.xlabel("X axis")
     plt.ylabel("Y axis")
     plt.legend()
-    #plt.show()
-    return  slope, intercept, x, y
+    plt.show() 
+
+    # Returning values necessary for unit tests
+    return slope, intercept, x, y
 
 
 
-#passed into plot_line() above
-x = line_df[x_axis]
-y = line_df[y_axis]
+
 
     #count the number of columns in csv
 def count_columns_pandas(csv):
+
+
     df = pd.read_csv(csv)  
     return len(df.columns)
 
@@ -95,6 +100,12 @@ def count_columns_pandas(csv):
 
 if __name__ == "__main__":
 
+    # Calls function so to be used in plot_line()
+    line_df = read_line_csv()
+    
+    #passed into plot_line() above
+    x = line_df[x_axis]
+    y = line_df[y_axis]
     plot_line(x, y)
     print(count_columns_pandas(csv_in_use))
     

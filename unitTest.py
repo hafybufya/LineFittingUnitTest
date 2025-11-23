@@ -1,57 +1,76 @@
+# ---------------------------------------------------------------------
+# IMPORTED FUNCTIONS USED IN PROGRAM
+# ---------------------------------------------------------------------
+
 import unittest
 from  mainCode import *
-from mainCode import count_columns_pandas
 import os
-
+from unittest.mock import patch
 from pathlib import Path
 
-# define the unit tests
+# ---------------------------------------------------------------------
+# Class of unit tests
+# ---------------------------------------------------------------------
+
 class my_unit_tests(unittest.TestCase):
 
-#FILE HANDLING
+# ---------------------------------------------------------------------
+# File handling unit tests
+# ---------------------------------------------------------------------
 
         # tests if the csv file has been saved
+    
     def test_csv_file_exists(self):
-        self.assertTrue(os.path.isfile('lineCsvFile.csv'))
+        self.assertTrue(os.path.isfile(csv_in_use))
 
-       #check code and csv are in the sam folder
-       #UNHARDCODE WHEN WE SHOVE VARIABLE NAMES YH
+       #check code and csv are in the same folder
+   
     def test_same_folder(self):
-        self.assertTrue(Path("lineCsvFile.csv").resolve().parent == Path("lineCode.py").resolve().parent)
-        
-#DATA CHECKING
+        self.assertTrue(Path(csv_in_use).resolve().parent == Path("mainCode.py").resolve().parent)
 
-        #tests if data points in x are numeric
-    def test_data_numeric_x(self):
+# ---------------------------------------------------------------------
+# Data checking unit tests
+# ---------------------------------------------------------------------
+
+    # Tests if all data points in x are numeric
+    @patch("mainCode.plt.show") # Prevents the line plot window from appearing when test is run
+    def test_data_numeric_x(self, mockshow):
+       
        slope, intercept, x , y = plot_line()      
        self.assertTrue(all([isinstance(item, int) for item in x]))
 
-        #tests if data points in y are numeric
-    def test_data_numeric_y(self):
-       slope, intercept, r, p, std_err, x , y = plot_line()   
+    # Tests if all data points in y are numeric
+    @patch("mainCode.plt.show") # Prevents the line plot window from appearing when test is run
+    def test_data_numeric_y(self, mockshow):
+       slope, intercept, x, y = plot_line()   
        self.assertTrue(all([isinstance(item, int) for item in y]))
       
-       #checks is theres 2 columns
+    # Checks if there is 2 columns in lineCsvFile
     def test_data_columns(self):
-        self.assertTrue(count_columns_pandas("lineCsvFile.csv") == 2)
+        self.assertTrue(count_columns_pandas(csv_in_use) == 2)
 
        #checks number of header lines
     # def test_header_number(self):
     #     pass
 
-#STASTICS VERIFICATION
+# ---------------------------------------------------------------------
+# Stastics verification unit tests
+# ---------------------------------------------------------------------
+
 
     #   #checks data is well correlated0.8<
     # def test_correlation():
     #     pass
 
        # tests if slope (4.07) is between range
-    def test_correct_slope(self):     
+    @patch("mainCode.plt.show") # Prevents the line plot window from appearing when test is run
+    def test_correct_slope(self, mockshow):     
         slope, intercept, x, y = plot_line()
         self.assertTrue( 4.00 <= slope <= 4.10)
 
         # tests if intercept (-0.67) is between range
-    def test_correct_intercept(self):     
+    @patch("mainCode.plt.show") # Prevents the line plot window from appearing when test is run
+    def test_correct_intercept(self, mockshow):     
         slope, intercept, x, y = plot_line()
         self.assertTrue( -0.70 <= intercept <= -0.60)
       
