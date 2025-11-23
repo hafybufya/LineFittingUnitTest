@@ -7,7 +7,7 @@ from  mainCode import *
 import os
 from unittest.mock import patch
 from pathlib import Path
-
+import csv
 # ---------------------------------------------------------------------
 # Class of unit tests
 # ---------------------------------------------------------------------
@@ -18,15 +18,16 @@ class my_unit_tests(unittest.TestCase):
 # File handling unit tests
 # ---------------------------------------------------------------------
 
-        # tests if the csv file has been saved
-    
+    # tests if the csv file has been saved
     def test_csv_file_exists(self):
         self.assertTrue(os.path.isfile(csv_in_use))
 
-       #check code and csv are in the same folder
-   
+
+    #check code and csv are in the same folder
     def test_same_folder(self):
         self.assertTrue(Path(csv_in_use).resolve().parent == Path("mainCode.py").resolve().parent)
+
+
 
 # ---------------------------------------------------------------------
 # Data checking unit tests
@@ -50,8 +51,12 @@ class my_unit_tests(unittest.TestCase):
         self.assertTrue(count_columns_pandas(csv_in_use) == 2)
 
        #checks number of header lines
-    # def test_header_number(self):
-    #     pass
+    def test_header_number(self):
+        with open(csv_in_use) as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=',')
+            header = next(csv_reader)
+        self.assertTrue(len(header) == 2)
+
 
 # ---------------------------------------------------------------------
 # Stastics verification unit tests
