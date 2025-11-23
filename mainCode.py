@@ -5,7 +5,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import linregress
-import csv
+
 # ---------------------------------------------------------------------
 # Defined CSV file name and columns as well as colours used in program
 #  -> make the code flexible if used dataset changed
