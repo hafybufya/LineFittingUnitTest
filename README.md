@@ -4,7 +4,7 @@ Line fitting repository which focuses heavily on unit tests which cover file han
 
 ## 📁 Project Structure
 
-'''
+```
 
 ├── mainCode.py
 ├── unitTest.py
@@ -13,7 +13,7 @@ Line fitting repository which focuses heavily on unit tests which cover file han
 └── .circle.ci/
     └── config.yml
 
-'''
+```
 
 ## 🛠️ Installation
 
@@ -28,6 +28,6 @@ Python modules used:
 
 You can install required packages with:
 
-'''
+```
 pip install pandas matplotlib scipy
-'''
+```
