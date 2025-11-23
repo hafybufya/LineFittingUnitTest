@@ -59,15 +59,15 @@ def read_line_csv():
 
 
 
-
 # opens csv file and performs linear regression
 
-def plot_line(x = None, y = None):
 
-    if x is None or y is None:
-        df = read_line_csv()
-        x = df[x_axis]
-        y = df[y_axis]
+def plot_line():
+
+    
+    df = read_line_csv()
+    x = df[x_axis]
+    y = df[y_axis]
 
     #ignoring uncecessary values
     slope, intercept, r, p, std_err = linregress(x, y)
@@ -87,26 +87,18 @@ def plot_line(x = None, y = None):
 
 
 
-
-
     #count the number of columns in csv
 def count_columns_pandas(csv):
-
 
     df = pd.read_csv(csv)  
     return len(df.columns)
 
 
-
 if __name__ == "__main__":
 
     # Calls function so to be used in plot_line()
-    line_df = read_line_csv()
-    
-    #passed into plot_line() above
-    x = line_df[x_axis]
-    y = line_df[y_axis]
-    plot_line(x, y)
+    line_df = read_line_csv()  
+    plot_line()
     print(count_columns_pandas(csv_in_use))
     
 
