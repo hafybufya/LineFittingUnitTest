@@ -1,8 +1,8 @@
 import unittest
-from  lineCode import line_function
-from lineCode import count_columns_pandas
+from  mainCode import *
+from mainCode import count_columns_pandas
 import os
-import pandas as pd
+
 from pathlib import Path
 
 # define the unit tests
@@ -22,13 +22,13 @@ class my_unit_tests(unittest.TestCase):
 #DATA CHECKING
 
         #tests if data points in x are numeric
-    def test_data_numeric(self):
-       slope, intercept, r, p, std_err, x , y = line_function()      
+    def test_data_numeric_x(self):
+       slope, intercept, x , y = plot_line()      
        self.assertTrue(all([isinstance(item, int) for item in x]))
 
         #tests if data points in y are numeric
-    def test_data_numeric(self):
-       slope, intercept, r, p, std_err, x , y = line_function()   
+    def test_data_numeric_y(self):
+       slope, intercept, r, p, std_err, x , y = plot_line()   
        self.assertTrue(all([isinstance(item, int) for item in y]))
       
        #checks is theres 2 columns
@@ -36,23 +36,23 @@ class my_unit_tests(unittest.TestCase):
         self.assertTrue(count_columns_pandas("lineCsvFile.csv") == 2)
 
        #checks number of header lines
-    def test_header_number(self):
-        pass
+    # def test_header_number(self):
+    #     pass
 
 #STASTICS VERIFICATION
 
-      #checks data is well correlated0.8<
-    def test_correlation():
-        pass
+    #   #checks data is well correlated0.8<
+    # def test_correlation():
+    #     pass
 
        # tests if slope (4.07) is between range
     def test_correct_slope(self):     
-        slope, intercept, x, y = line_function()
+        slope, intercept, x, y = plot_line()
         self.assertTrue( 4.00 <= slope <= 4.10)
 
         # tests if intercept (-0.67) is between range
     def test_correct_intercept(self):     
-        slope, intercept, x, y = line_function()
+        slope, intercept, x, y = plot_line()
         self.assertTrue( -0.70 <= intercept <= -0.60)
       
     # run the tests
