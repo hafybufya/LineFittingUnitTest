@@ -1,5 +1,4 @@
 pytest
-os
 pathlib
 matplotlib
 pandas
