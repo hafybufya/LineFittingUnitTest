@@ -98,7 +98,7 @@ def plot_line():
 # FUNCTION: Counts number of columns in csv
 # ---------------------------------------------------------------------
 
-def count_columns_pandas(csv):
+def count_rows_columns_pandas(csv):
 
     """
     
@@ -110,7 +110,8 @@ def count_columns_pandas(csv):
 
     Return
     ------
-    int, number of columns in csv
+    len(df)         : int, number of rows in csv
+    len(df.columns) : int, number of columns in csv
 
     """
 
@@ -118,12 +119,12 @@ def count_columns_pandas(csv):
     df = pd.read_csv(csv)  
 
     # Returns the number of columns in df
-    return len(df.columns)
+    return len(df), len(df.columns)
 
 
 if __name__ == "__main__":
 
     line_df = read_line_csv()  # Calls function so to be used in plot_line()
     plot_line()
-    print(count_columns_pandas(csv_in_use))
-    
+    rows, cols = count_rows_columns_pandas(csv_in_use)
+    print(rows, cols)
