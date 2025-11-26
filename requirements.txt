@@ -1,5 +1,6 @@
 pytest
+os
+pathlib
 matplotlib
 pandas
 scipy
-csv
