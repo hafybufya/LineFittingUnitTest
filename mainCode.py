@@ -18,7 +18,7 @@ csv_in_use = "lineCsvFile.csv"
 x_axis = "x"
 y_axis = "y"
 
-# Colors for plots
+# Colours for plots
 colour_1 = "#e63946"
 colour_2 = "#2596be"
 
