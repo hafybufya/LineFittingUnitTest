@@ -9,6 +9,8 @@ Line fitting repository which focuses heavily on unit tests which cover file han
 ├── mainCode.py
 ├── unitTest.py
 ├── requirements.txt
+├── lineCsvFile.csv
+├── LICENSE
 └── README.md
 └── .circle.ci/
     └── config.yml
