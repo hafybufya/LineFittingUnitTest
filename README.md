@@ -31,3 +31,8 @@ You can install required packages with:
 ```
 pip install pandas matplotlib scipy
 ```
+
+
+## 📄 License
+This project is open source and available under the [MIT License](https://github.com/hafybufya/line-fitting-pipeline/blob/main/LICENSE).
+
